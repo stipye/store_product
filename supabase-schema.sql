@@ -3,6 +3,8 @@
 -- Se você já rodou este script antes (era a versão AfiliML/perfumes) e só
 -- precisa adicionar a coluna nova do rebranding PromoPump, rode apenas:
 -- alter table public.products add column if not exists marketplace text;
+-- alter table public.products add column if not exists coupon_code text;
+-- alter table public.products add column if not exists coupon_discount text;
 
 create table if not exists public.products (
   id text primary key,
@@ -31,6 +33,8 @@ create table if not exists public.products (
   origin text,
   stock_status text,
   frete text,
+  coupon_code text,
+  coupon_discount text,
   created_at timestamptz default now()
 );
 

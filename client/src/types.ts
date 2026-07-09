@@ -31,6 +31,8 @@ export interface Product {
   origin?: "brasil" | "internacional" | string;
   stock_status?: string;
   frete?: string;
+  coupon_code?: string;
+  coupon_discount?: string;
   created_at?: string;
 }
 

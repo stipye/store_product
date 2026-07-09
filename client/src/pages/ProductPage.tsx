@@ -9,6 +9,9 @@ import {
   PackageCheck,
   ExternalLink,
   AlertTriangle,
+  Tag,
+  Copy,
+  Check,
 } from "lucide-react";
 import ProductCard from "../components/ProductCard";
 import { API_URL, type Product } from "../types";
@@ -27,6 +30,7 @@ export default function ProductPage() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
+  const [couponCopied, setCouponCopied] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -280,6 +284,41 @@ export default function ProductPage() {
               {marketplace ? `via ${marketplace.label}` : "via loja parceira"}
             </p>
           </div>
+
+          {product.coupon_code && (
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(product.coupon_code!).then(() => {
+                  setCouponCopied(true);
+                  setTimeout(() => setCouponCopied(false), 1500);
+                });
+              }}
+              className="flex items-center justify-between gap-2 rounded-2xl border-2 border-dashed border-orange-300 bg-orange-50 px-4 py-3 text-left transition hover:border-[var(--color-primary)]"
+            >
+              <span className="flex items-center gap-2">
+                <Tag className="h-4 w-4 shrink-0 text-orange-500" />
+                <span>
+                  <span className="block text-xs font-semibold text-gray-500">
+                    {product.coupon_discount
+                      ? `Cupom: ${product.coupon_discount}`
+                      : "Cupom disponível"}
+                  </span>
+                  <span className="block font-mono text-sm font-black tracking-wider text-gray-900">
+                    {product.coupon_code}
+                  </span>
+                </span>
+              </span>
+              {couponCopied ? (
+                <span className="flex items-center gap-1 text-xs font-bold text-emerald-600">
+                  <Check className="h-4 w-4" /> Copiado
+                </span>
+              ) : (
+                <span className="flex items-center gap-1 text-xs font-bold text-orange-600">
+                  <Copy className="h-4 w-4" /> Copiar
+                </span>
+              )}
+            </button>
+          )}
 
           <button
             onClick={() =>

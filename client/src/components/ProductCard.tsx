@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { Link } from "wouter";
-import { Star, Zap, Truck, AlertTriangle, Flame } from "lucide-react";
+import { Star, Zap, Truck, AlertTriangle, Flame, Tag, Copy, Check } from "lucide-react";
 import type { Product } from "../types";
 
 function formatPrice(value?: number) {
@@ -12,6 +12,17 @@ export default function ProductCard({ product }: { product: Product }) {
   const images =
     product.images && product.images.length > 0 ? product.images : [product.image];
   const [activeImage, setActiveImage] = useState(0);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCoupon = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!product.coupon_code) return;
+    navigator.clipboard.writeText(product.coupon_code).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
+  };
 
   const hasDiscount =
     !!product.original_price && product.original_price > product.price;
@@ -197,6 +208,27 @@ export default function ProductCard({ product }: { product: Product }) {
             {formatPrice(product.price)}
           </span>
         </div>
+
+        {product.coupon_code && (
+          <button
+            onClick={handleCopyCoupon}
+            className="flex items-center justify-between gap-1 rounded-lg border border-dashed border-orange-300 bg-orange-50 px-2 py-1.5 text-left"
+            title="Copiar código do cupom"
+          >
+            <span className="flex min-w-0 items-center gap-1 text-[10px] font-bold text-orange-700">
+              <Tag className="h-3 w-3 shrink-0" />
+              <span className="truncate">
+                {product.coupon_discount ? `${product.coupon_discount} · ` : ""}
+                {product.coupon_code}
+              </span>
+            </span>
+            {copied ? (
+              <Check className="h-3 w-3 shrink-0 text-emerald-600" />
+            ) : (
+              <Copy className="h-3 w-3 shrink-0 text-orange-500" />
+            )}
+          </button>
+        )}
 
         <div className="mt-2 grid grid-cols-2 gap-2">
           <Link

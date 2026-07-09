@@ -57,6 +57,8 @@ const emptyProduct = (): Product => ({
   origin: "brasil",
   stock_status: "",
   frete: "",
+  coupon_code: "",
+  coupon_discount: "",
 });
 
 export default function Admin() {
@@ -431,6 +433,11 @@ export default function Admin() {
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex flex-wrap gap-1">
+                          {product.coupon_code && (
+                            <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">
+                              🏷️ Cupom
+                            </span>
+                          )}
                           {product.marketplace === "mercado_livre" && (
                             <span className="rounded-full bg-yellow-400 px-2 py-0.5 text-[10px] font-black text-yellow-950">
                               ML
@@ -717,6 +724,32 @@ export default function Admin() {
                     onChange={(e) =>
                       setEditing({ ...editing, affiliate_link: e.target.value })
                     }
+                    className="w-full rounded-xl border-2 border-gray-200 px-3 py-2 text-sm font-semibold focus:border-[var(--color-primary)] focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1 block text-xs font-black uppercase text-gray-400">
+                    Código do cupom
+                  </label>
+                  <input
+                    value={editing.coupon_code ?? ""}
+                    onChange={(e) =>
+                      setEditing({ ...editing, coupon_code: e.target.value })
+                    }
+                    placeholder="Ex: PROMOPUMP10"
+                    className="w-full rounded-xl border-2 border-gray-200 px-3 py-2 text-sm font-semibold uppercase focus:border-[var(--color-primary)] focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1 block text-xs font-black uppercase text-gray-400">
+                    Desconto do cupom
+                  </label>
+                  <input
+                    value={editing.coupon_discount ?? ""}
+                    onChange={(e) =>
+                      setEditing({ ...editing, coupon_discount: e.target.value })
+                    }
+                    placeholder="Ex: 10% OFF ou R$20 OFF"
                     className="w-full rounded-xl border-2 border-gray-200 px-3 py-2 text-sm font-semibold focus:border-[var(--color-primary)] focus:outline-none"
                   />
                 </div>

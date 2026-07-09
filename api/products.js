@@ -58,6 +58,8 @@ const ALLOWED_FIELDS = [
   "origin",
   "stock_status",
   "frete",
+  "coupon_code",
+  "coupon_discount",
 ];
 
 function pickAllowedFields(body) {
