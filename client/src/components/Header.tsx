@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, ShoppingBag, ExternalLink } from "lucide-react";
+import { Menu, X, Dumbbell, ArrowRight } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Produtos", href: "#produtos" },
@@ -22,10 +22,10 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl btn-primary-gradient text-white shadow-sm">
-            <ShoppingBag className="h-5 w-5" strokeWidth={2.5} />
+            <Dumbbell className="h-5 w-5" strokeWidth={2.5} />
           </span>
           <span className="text-xl font-black tracking-tight text-gray-900">
-            Afili<span className="text-[var(--color-primary)]">ML</span>
+            Promo<span className="text-[var(--color-primary)]">Pump</span>
           </span>
         </Link>
 
@@ -42,15 +42,13 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <a
-            href="https://www.mercadolivre.com.br"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full btn-primary-gradient px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-purple-200 transition hover:shadow-lg hover:shadow-purple-300 active:scale-95"
+          <button
+            onClick={() => handleNavClick("#produtos")}
+            className="inline-flex items-center gap-2 rounded-full btn-primary-gradient px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-orange-200 transition hover:shadow-lg hover:shadow-orange-300 active:scale-95"
           >
-            Ver no ML
-            <ExternalLink className="h-4 w-4" />
-          </a>
+            Ver ofertas
+            <ArrowRight className="h-4 w-4" />
+          </button>
         </div>
 
         <button
@@ -74,15 +72,13 @@ export default function Header() {
                 {link.label}
               </button>
             ))}
-            <a
-              href="https://www.mercadolivre.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => handleNavClick("#produtos")}
               className="inline-flex items-center justify-center gap-2 rounded-full btn-primary-gradient px-5 py-2.5 text-sm font-bold text-white"
             >
-              Ver no ML
-              <ExternalLink className="h-4 w-4" />
-            </a>
+              Ver ofertas
+              <ArrowRight className="h-4 w-4" />
+            </button>
           </nav>
         </div>
       )}

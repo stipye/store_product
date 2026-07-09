@@ -30,6 +30,12 @@ export default function ProductCard({ product }: { product: Product }) {
   };
   const gender = product.gender ? genderMeta[product.gender] : undefined;
 
+  const marketplaceMeta: Record<string, { label: string; classes: string }> = {
+    mercado_livre: { label: "Mercado Livre", classes: "bg-yellow-400 text-yellow-950" },
+    amazon: { label: "Amazon", classes: "bg-gray-900 text-white" },
+  };
+  const marketplace = product.marketplace ? marketplaceMeta[product.marketplace] : undefined;
+
   const outOfStock = product.in_stock === false;
 
   const handleBuy = () => {
@@ -40,7 +46,7 @@ export default function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:shadow-xl hover:shadow-purple-100">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:shadow-xl hover:shadow-orange-100">
       <div
         className="relative aspect-square overflow-hidden bg-gray-50"
         onMouseEnter={() => images.length > 1 && setActiveImage(1)}
@@ -143,9 +149,18 @@ export default function ProductCard({ product }: { product: Product }) {
           )}
         </div>
 
-        <p className="text-[11px] font-bold uppercase tracking-wide text-gray-400">
-          {product.brand}
-        </p>
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-[11px] font-bold uppercase tracking-wide text-gray-400">
+            {product.brand}
+          </p>
+          {marketplace && (
+            <span
+              className={`shrink-0 rounded-md px-1.5 py-0.5 text-[9px] font-black uppercase ${marketplace.classes}`}
+            >
+              {marketplace.label}
+            </span>
+          )}
+        </div>
         <Link href={`/produto/${product.id}`}>
           <h3 className="line-clamp-2 text-sm font-bold text-gray-900 hover:text-[var(--color-primary)] sm:text-base">
             {product.name}
@@ -196,7 +211,7 @@ export default function ProductCard({ product }: { product: Product }) {
             className={`flex items-center justify-center rounded-full px-2 py-2 text-xs font-bold text-white transition ${
               outOfStock
                 ? "cursor-not-allowed bg-gray-300"
-                : "btn-primary-gradient shadow-md shadow-purple-200 hover:shadow-lg active:scale-95"
+                : "btn-primary-gradient shadow-md shadow-orange-200 hover:shadow-lg active:scale-95"
             }`}
           >
             {outOfStock ? "Esgotado" : "Comprar"}

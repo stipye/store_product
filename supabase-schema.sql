@@ -1,5 +1,9 @@
 -- Execute este SQL no editor SQL do Supabase para criar a tabela "products".
 
+-- Se você já rodou este script antes (era a versão AfiliML/perfumes) e só
+-- precisa adicionar a coluna nova do rebranding PromoPump, rode apenas:
+-- alter table public.products add column if not exists marketplace text;
+
 create table if not exists public.products (
   id text primary key,
   name text not null,
@@ -16,6 +20,7 @@ create table if not exists public.products (
   sold_count text,
   rating numeric,
   gender text,
+  marketplace text,
   ml_item_id text,
   reviews jsonb default '[]'::jsonb,
   active boolean default true,
@@ -48,3 +53,4 @@ create policy "Public delete access via API" on public.products
 
 create index if not exists products_created_at_idx on public.products (created_at desc);
 create index if not exists products_active_idx on public.products (active);
+create index if not exists products_marketplace_idx on public.products (marketplace);

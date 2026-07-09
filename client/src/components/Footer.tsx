@@ -1,4 +1,4 @@
-import { ShoppingBag, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
+import { Dumbbell, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -10,15 +10,16 @@ export default function Footer() {
           <div>
             <div className="mb-3 flex items-center gap-2">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl btn-primary-gradient text-white">
-                <ShoppingBag className="h-4 w-4" strokeWidth={2.5} />
+                <Dumbbell className="h-4 w-4" strokeWidth={2.5} />
               </span>
               <span className="text-lg font-black text-gray-900">
-                Afili<span className="text-[var(--color-primary)]">ML</span>
+                Promo<span className="text-[var(--color-primary)]">Pump</span>
               </span>
             </div>
             <p className="text-sm font-medium text-gray-500">
-              Sua loja de afiliados profissional. Selecionamos os melhores
-              produtos do Mercado Livre para você.
+              Sua loja de afiliados profissional de produtos para academia.
+              Selecionamos as melhores ofertas do Mercado Livre e da Amazon
+              para você.
             </p>
           </div>
 
@@ -52,7 +53,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm font-semibold text-gray-500">
               <li>Como comprar</li>
               <li>Frete e entrega</li>
-              <li>Trocas via Mercado Livre</li>
+              <li>Trocas via Mercado Livre ou Amazon</li>
               <li>Fale conosco</li>
             </ul>
           </div>
@@ -78,8 +79,8 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-gray-100 pt-6 text-center text-xs font-semibold text-gray-400">
           <p>
-            © {year} AfiliML. Como Afiliado Mercado Livre, ganhamos comissões
-            por compras qualificadas.
+            © {year} PromoPump. Como afiliado Mercado Livre e Amazon, ganhamos
+            comissões por compras qualificadas.
           </p>
         </div>
       </div>

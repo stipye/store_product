@@ -1,7 +1,7 @@
-# AfiliML — Sua loja de afiliados profissional
+# PromoPump — Sua loja de afiliados profissional
 
-Template completo de loja de afiliados do Mercado Livre. Começa sem produtos —
-eles são adicionados via API (painel `/admin` ou a extensão AfiML).
+Template completo de loja de afiliados de produtos para academia, com ofertas do Mercado Livre e da Amazon. Começa sem produtos —
+eles são adicionados via API (painel `/admin` ou a extensão PromoPump).
 
 ## Stack
 
@@ -34,7 +34,7 @@ rodando.
    - `SUPABASE_URL`
    - `SUPABASE_ANON_KEY`
    - `API_SECRET` — chave que você vai usar para logar no `/admin` e para
-     autenticar a extensão AfiML (enviada no header `X-API-Secret`).
+     autenticar a extensão PromoPump (enviada no header `X-API-Secret`).
 
 ## Deploy na Vercel
 

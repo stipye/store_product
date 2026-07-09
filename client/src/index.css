@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #7c3aed;
-  --color-primary-dark: #6d28d9;
-  --color-primary-light: #9333ea;
+  --color-primary: #f97316;
+  --color-primary-dark: #ea580c;
+  --color-primary-light: #fb923c;
   --color-primary-foreground: #ffffff;
 }
 
 :root {
-  --primary: #7c3aed;
+  --primary: #f97316;
   --primary-foreground: #ffffff;
 }
 
@@ -35,7 +35,7 @@ body {
   background: #f3f4f6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c4b5fd;
+  background: #fed7aa;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -43,7 +43,7 @@ body {
 }
 
 .btn-primary-gradient {
-  background: linear-gradient(135deg, #7c3aed, #9333ea);
+  background: linear-gradient(135deg, #f97316, #ea580c);
 }
 
 .line-clamp-2 {

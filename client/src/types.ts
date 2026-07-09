@@ -20,6 +20,7 @@ export interface Product {
   sold_count?: string;
   rating?: number;
   gender?: "feminino" | "masculino" | "unissex" | string;
+  marketplace?: "mercado_livre" | "amazon" | string;
   ml_item_id?: string;
   reviews?: Review[];
   active?: boolean;

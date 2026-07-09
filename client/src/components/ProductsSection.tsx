@@ -10,8 +10,8 @@ type FilterKey =
   | "masculino"
   | "unissex"
   | "frete"
-  | "brasil"
-  | "internacional"
+  | "mercado_livre"
+  | "amazon"
   | "novidades"
   | "mais_vendidos"
   | "ate_200";
@@ -22,8 +22,8 @@ const FILTERS: { key: FilterKey; label: string }[] = [
   { key: "masculino", label: "Masculinos" },
   { key: "unissex", label: "Unissex" },
   { key: "frete", label: "✈️ Frete Grátis" },
-  { key: "brasil", label: "🇧🇷 Brasil" },
-  { key: "internacional", label: "🌎 Internacional" },
+  { key: "mercado_livre", label: "🛒 Mercado Livre" },
+  { key: "amazon", label: "📦 Amazon" },
   { key: "novidades", label: "✨ Novidades" },
   { key: "mais_vendidos", label: "🔥 Mais Vendidos" },
   { key: "ate_200", label: "Até R$200" },
@@ -98,11 +98,11 @@ export default function ProductsSection() {
       case "frete":
         list = list.filter((p) => p.free_shipping);
         break;
-      case "brasil":
-        list = list.filter((p) => p.origin === "brasil");
+      case "mercado_livre":
+        list = list.filter((p) => p.marketplace === "mercado_livre");
         break;
-      case "internacional":
-        list = list.filter((p) => p.origin === "internacional");
+      case "amazon":
+        list = list.filter((p) => p.marketplace === "amazon");
         break;
       case "novidades":
         list = list.filter((p) => p.is_new);
@@ -149,7 +149,7 @@ export default function ProductsSection() {
           Nossos produtos
         </h2>
         <p className="font-semibold text-gray-500">
-          Escolha entre nossa seleção cuidadosa de fragrâncias
+          Escolha entre nossa seleção cuidadosa de equipamentos e suplementos
         </p>
       </div>
 
@@ -161,7 +161,7 @@ export default function ProductsSection() {
               onClick={() => setActiveFilter(f.key)}
               className={`rounded-full px-4 py-2 text-xs font-bold transition sm:text-sm ${
                 activeFilter === f.key
-                  ? "btn-primary-gradient text-white shadow-md shadow-purple-200"
+                  ? "btn-primary-gradient text-white shadow-md shadow-orange-200"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -209,11 +209,11 @@ export default function ProductsSection() {
             Nenhum produto na loja ainda
           </p>
           <p className="mt-1 font-semibold text-gray-500">
-            Adicione produtos usando a extensão AfiML
+            Adicione produtos usando a extensão PromoPump
           </p>
           <Link
             href="/admin"
-            className="mt-6 inline-flex items-center justify-center rounded-full btn-primary-gradient px-6 py-3 text-sm font-bold text-white shadow-md shadow-purple-200"
+            className="mt-6 inline-flex items-center justify-center rounded-full btn-primary-gradient px-6 py-3 text-sm font-bold text-white shadow-md shadow-orange-200"
           >
             Ir para o Admin
           </Link>

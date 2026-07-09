@@ -45,6 +45,7 @@ const ALLOWED_FIELDS = [
   "sold_count",
   "rating",
   "gender",
+  "marketplace",
   "ml_item_id",
   "reviews",
   "active",

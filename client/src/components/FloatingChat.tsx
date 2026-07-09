@@ -10,27 +10,27 @@ const FAQS = [
   {
     question: "Como funciona a compra?",
     answer:
-      "Você escolhe o produto aqui, clica em 'Comprar' e é redirecionado direto para o Mercado Livre, onde finaliza a compra com toda a segurança da plataforma.",
+      "Você escolhe o produto aqui, clica em 'Comprar' e é redirecionado direto para o Mercado Livre ou a Amazon (dependendo do produto), onde finaliza a compra com toda a segurança da plataforma.",
   },
   {
     question: "O frete é grátis?",
     answer:
-      "Produtos com o selo ✈️ Frete Grátis têm frete grátis para todo o Brasil em compras qualificadas pelo Mercado Livre.",
+      "Produtos com o selo ✈️ Frete Grátis têm frete grátis para todo o Brasil em compras qualificadas pelo Mercado Livre ou pela Amazon.",
   },
   {
-    question: "Os perfumes são originais?",
+    question: "Os produtos são originais?",
     answer:
-      "Sim! Trabalhamos apenas com vendedores confiáveis e produtos originais, com nota fiscal e garantia do Mercado Livre.",
+      "Sim! Trabalhamos apenas com vendedores confiáveis e produtos originais, com nota fiscal e garantia do Mercado Livre e da Amazon.",
   },
   {
     question: "Quanto tempo demora a entrega?",
     answer:
-      "O prazo depende do vendedor e da sua localização, mas a maioria dos produtos com FULL chega em 2 a 5 dias úteis.",
+      "O prazo depende do vendedor e da sua localização, mas a maioria dos produtos com FULL ou Prime chega em 2 a 5 dias úteis.",
   },
   {
     question: "Posso trocar ou devolver?",
     answer:
-      "Sim, todas as compras seguem a política de trocas e devoluções do Mercado Livre, com prazo de até 30 dias.",
+      "Sim, todas as compras seguem a política de trocas e devoluções da própria plataforma onde foram feitas, com prazo de até 30 dias.",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function FloatingChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       from: "bot",
-      text: "Olá! 👋 Sou o assistente da AfiliML. Escolha uma pergunta abaixo ou digite a sua dúvida.",
+      text: "Olá! 👋 Sou o assistente da PromoPump. Escolha uma pergunta abaixo ou digite a sua dúvida.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -71,8 +71,8 @@ export default function FloatingChat() {
         <div className="mb-3 flex h-[28rem] w-80 flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-2xl sm:w-96">
           <div className="flex items-center justify-between btn-primary-gradient px-4 py-3.5 text-white">
             <div>
-              <p className="text-sm font-black">Fale com a AfiliML</p>
-              <p className="text-xs font-semibold text-purple-100">
+              <p className="text-sm font-black">Fale com a PromoPump</p>
+              <p className="text-xs font-semibold text-orange-100">
                 Normalmente responde em minutos
               </p>
             </div>
@@ -130,7 +130,7 @@ export default function FloatingChat() {
 
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex h-14 w-14 items-center justify-center rounded-full btn-primary-gradient text-white shadow-xl shadow-purple-300 transition hover:scale-105 active:scale-95"
+        className="flex h-14 w-14 items-center justify-center rounded-full btn-primary-gradient text-white shadow-xl shadow-orange-300 transition hover:scale-105 active:scale-95"
         aria-label="Abrir chat"
       >
         {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}

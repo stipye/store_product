@@ -4,27 +4,27 @@ const REVIEWS = [
   {
     author: "Mariana S.",
     rating: 5,
-    text: "Perfume chegou rapidinho e o cheiro é idêntico ao original. Já é a terceira vez que compro e nunca me decepcionou.",
+    text: "Os halteres chegaram rapidinho e a qualidade é excelente. Já é a terceira vez que compro e nunca me decepcionou.",
   },
   {
     author: "Carlos E.",
     rating: 5,
-    text: "Fixação excelente, dura o dia inteiro. Atendimento nota 10 e embalagem muito bem cuidada.",
+    text: "Whey com ótimo custo-benefício, sabor muito bom. Atendimento nota 10 e entrega bem embalada.",
   },
   {
     author: "Fernanda L.",
     rating: 4,
-    text: "Gostei muito da fragrância, só achei o frasco um pouco menor do que esperava. Ainda assim vale muito o preço.",
+    text: "Gostei muito da faixa elástica, só achei a resistência um pouco menor do que esperava. Ainda assim vale muito o preço.",
   },
   {
     author: "Rodrigo A.",
     rating: 5,
-    text: "Comprei de presente para minha esposa e ela amou. Recomendo para quem quer qualidade sem pagar caro.",
+    text: "Comprei o kit de anilhas pela Amazon com o link daqui e chegou dois dias antes do previsto. Recomendo demais.",
   },
   {
     author: "Juliana P.",
     rating: 5,
-    text: "Melhor custo-benefício que já encontrei em perfumaria árabe. Virei cliente fiel da loja.",
+    text: "Melhor custo-benefício que já encontrei em produtos fitness. Virei cliente fiel da loja.",
   },
 ];
 

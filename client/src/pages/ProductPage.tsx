@@ -118,6 +118,13 @@ export default function ProductPage() {
   };
   const gender = product.gender ? genderMeta[product.gender] : undefined;
 
+  const marketplaceMeta: Record<string, { label: string; classes: string }> = {
+    mercado_livre: { label: "Mercado Livre", classes: "bg-yellow-400 text-yellow-950" },
+    amazon: { label: "Amazon", classes: "bg-gray-900 text-white" },
+  };
+  const marketplace = product.marketplace ? marketplaceMeta[product.marketplace] : undefined;
+  const buyLabel = marketplace ? `Comprar na ${marketplace.label}` : "Comprar agora";
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <nav className="mb-6 text-xs font-bold text-gray-400">
@@ -214,6 +221,13 @@ export default function ProductPage() {
           )}
 
           <div className="flex flex-wrap gap-2">
+            {marketplace && (
+              <span
+                className={`rounded-full px-3 py-1 text-xs font-bold ${marketplace.classes}`}
+              >
+                {marketplace.label}
+              </span>
+            )}
             {gender && (
               <span className={`rounded-full px-3 py-1 text-xs font-bold ${gender.classes}`}>
                 {gender.label}
@@ -246,7 +260,7 @@ export default function ProductPage() {
             )}
           </div>
 
-          <div className="rounded-2xl bg-purple-50 p-5">
+          <div className="rounded-2xl bg-orange-50 p-5">
             <div className="flex items-baseline gap-3">
               {hasDiscount && (
                 <span className="text-sm font-semibold text-gray-400 line-through">
@@ -263,7 +277,7 @@ export default function ProductPage() {
               {formatPrice(product.price)}
             </p>
             <p className="mt-1 text-xs font-semibold text-gray-500">
-              via Mercado Livre
+              {marketplace ? `via ${marketplace.label}` : "via loja parceira"}
             </p>
           </div>
 
@@ -277,10 +291,10 @@ export default function ProductPage() {
             className={`flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-black text-white transition ${
               outOfStock
                 ? "cursor-not-allowed bg-gray-300"
-                : "btn-primary-gradient shadow-lg shadow-purple-200 hover:shadow-xl active:scale-95"
+                : "btn-primary-gradient shadow-lg shadow-orange-200 hover:shadow-xl active:scale-95"
             }`}
           >
-            {outOfStock ? "Esgotado" : "Comprar no Mercado Livre"}
+            {outOfStock ? "Esgotado" : buyLabel}
             {!outOfStock && <ExternalLink className="h-5 w-5" />}
           </button>
 

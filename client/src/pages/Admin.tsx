@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  ShoppingBag,
+  Dumbbell,
   LogOut,
   Search,
   Plus,
@@ -46,6 +46,7 @@ const emptyProduct = (): Product => ({
   sold_count: "",
   rating: 5,
   gender: "unissex",
+  marketplace: "mercado_livre",
   ml_item_id: "",
   reviews: [],
   active: true,
@@ -266,9 +267,9 @@ export default function Admin() {
         <div className="w-full max-w-sm rounded-3xl border border-gray-100 bg-white p-8 shadow-xl">
           <div className="mb-6 flex flex-col items-center gap-2 text-center">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl btn-primary-gradient text-white">
-              <ShoppingBag className="h-6 w-6" strokeWidth={2.5} />
+              <Dumbbell className="h-6 w-6" strokeWidth={2.5} />
             </span>
-            <h1 className="text-xl font-black text-gray-900">Painel AfiliML</h1>
+            <h1 className="text-xl font-black text-gray-900">Painel PromoPump</h1>
             <p className="text-sm font-semibold text-gray-500">
               Digite a chave secreta para continuar
             </p>
@@ -289,7 +290,7 @@ export default function Admin() {
 
           <button
             onClick={handleLogin}
-            className="mt-4 w-full rounded-full btn-primary-gradient px-5 py-3 text-sm font-bold text-white shadow-md shadow-purple-200"
+            className="mt-4 w-full rounded-full btn-primary-gradient px-5 py-3 text-sm font-bold text-white shadow-md shadow-orange-200"
           >
             Entrar
           </button>
@@ -305,10 +306,10 @@ export default function Admin() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl btn-primary-gradient text-white">
-              <ShoppingBag className="h-4 w-4" strokeWidth={2.5} />
+              <Dumbbell className="h-4 w-4" strokeWidth={2.5} />
             </span>
             <span className="text-lg font-black text-gray-900">
-              Admin <span className="text-[var(--color-primary)]">AfiliML</span>
+              Admin <span className="text-[var(--color-primary)]">PromoPump</span>
             </span>
           </div>
           <button
@@ -351,7 +352,7 @@ export default function Admin() {
           </div>
           <button
             onClick={openCreateModal}
-            className="flex items-center justify-center gap-2 rounded-full btn-primary-gradient px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-purple-200"
+            className="flex items-center justify-center gap-2 rounded-full btn-primary-gradient px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-orange-200"
           >
             <Plus className="h-4 w-4" />
             Adicionar produto
@@ -430,6 +431,16 @@ export default function Admin() {
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex flex-wrap gap-1">
+                          {product.marketplace === "mercado_livre" && (
+                            <span className="rounded-full bg-yellow-400 px-2 py-0.5 text-[10px] font-black text-yellow-950">
+                              ML
+                            </span>
+                          )}
+                          {product.marketplace === "amazon" && (
+                            <span className="rounded-full bg-gray-900 px-2 py-0.5 text-[10px] font-black text-white">
+                              AMZ
+                            </span>
+                          )}
                           {product.gender === "feminino" && (
                             <span className="rounded-full bg-pink-100 px-2 py-0.5 text-[10px] font-bold text-pink-700">
                               ♀
@@ -583,14 +594,14 @@ export default function Admin() {
                         <button
                           onClick={() => moveImage(idx, -1)}
                           title="Mover para esquerda"
-                          className="text-white hover:text-purple-300"
+                          className="text-white hover:text-orange-300"
                         >
                           <ArrowUp className="h-3 w-3 -rotate-90" />
                         </button>
                         <button
                           onClick={() => moveImage(idx, 1)}
                           title="Mover para direita"
-                          className="text-white hover:text-purple-300"
+                          className="text-white hover:text-orange-300"
                         >
                           <ArrowDown className="h-3 w-3 -rotate-90" />
                         </button>
@@ -711,6 +722,21 @@ export default function Admin() {
                 </div>
                 <div>
                   <label className="mb-1 block text-xs font-black uppercase text-gray-400">
+                    Marketplace
+                  </label>
+                  <select
+                    value={editing.marketplace ?? "mercado_livre"}
+                    onChange={(e) =>
+                      setEditing({ ...editing, marketplace: e.target.value })
+                    }
+                    className="w-full rounded-xl border-2 border-gray-200 px-3 py-2 text-sm font-semibold focus:border-[var(--color-primary)] focus:outline-none"
+                  >
+                    <option value="mercado_livre">Mercado Livre</option>
+                    <option value="amazon">Amazon</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="mb-1 block text-xs font-black uppercase text-gray-400">
                     Gênero
                   </label>
                   <select
@@ -819,7 +845,7 @@ export default function Admin() {
               </button>
               <button
                 onClick={handleSave}
-                className="flex-1 rounded-full btn-primary-gradient px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-purple-200"
+                className="flex-1 rounded-full btn-primary-gradient px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-orange-200"
               >
                 Salvar
               </button>
